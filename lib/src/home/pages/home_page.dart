@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spy/src/home/controller/home_page_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,11 +9,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late final HomeController controller;
   int _value = 0;
 
   @override
   void initState() {
     super.initState();
+
+    // controller = null; //context.read<HomeController>();
   }
 
   @override

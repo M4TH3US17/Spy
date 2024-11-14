@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spy/src/home/controller/home_page_controller.dart';
 import 'package:spy/src/home/pages/home_page.dart';
+import 'package:spy/src/home/repository/home_repository.dart';
 
 class SpyApp extends StatefulWidget {
   const SpyApp({super.key});
@@ -11,6 +12,7 @@ class SpyApp extends StatefulWidget {
 
 class _SpyAppState extends State<SpyApp> {
   // repositories
+  final homeRepository = HttpHomeRepository();
 
   // controllers
   late final homeController;
