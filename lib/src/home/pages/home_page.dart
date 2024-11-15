@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:spy/src/home/controller/home_page_controller.dart';
+import 'package:spy/src/home/pages/widgets/list/list.dart';
+//import 'package:spy/src/shared/model/base_resposta_api.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  //final List<RespostaAPI> accounts;
+
+  const HomePage({super.key /*, required this.accounts*/});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -10,7 +14,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late final HomeController controller;
-  int _value = 0;
 
   @override
   void initState() {
@@ -24,26 +27,28 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
-  void _increment() {
-    setState(() {
-      _value += 1;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(''),
+        title: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 0.12),
+          child: Text(
+            "Spy App",
+            style:
+                TextStyle(color: Colors.white, backgroundColor: Colors.green),
+          ),
+        ),
+        backgroundColor: Colors.black,
       ),
       body: Container(
-        child: Text('VALOR: $_value'),
-        color: Colors.deepOrange,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _increment,
-        child: Text('INCREMENTAR'),
-      ),
+          padding: const EdgeInsets.only(top: 10),
+          height: size.height,
+          width: size.width,
+          decoration: BoxDecoration(color: Colors.blue[100]),
+          child: const HomeListWidget()),
     );
   }
 }
