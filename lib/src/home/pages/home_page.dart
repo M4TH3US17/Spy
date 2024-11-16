@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spy/src/home/controller/home_page_controller.dart';
 import 'package:spy/src/home/pages/widgets/list/list.dart';
+import 'package:spy/src/shared/utils/converters.dart';
 //import 'package:spy/src/shared/model/base_resposta_api.dart';
 
 class HomePage extends StatefulWidget {
@@ -33,9 +34,10 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 0.12),
-          child: Text(
+        title: Padding(
+          padding:
+              EdgeInsets.symmetric(horizontal: convertWidth(0.12, size.width)),
+          child: const Text(
             "Spy App",
             style:
                 TextStyle(color: Colors.white, backgroundColor: Colors.green),
@@ -44,7 +46,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.black,
       ),
       body: Container(
-          padding: const EdgeInsets.only(top: 10),
+          padding: EdgeInsets.only(top: convertHeight(10, size.height)),
           height: size.height,
           width: size.width,
           decoration: BoxDecoration(color: Colors.blue[100]),

