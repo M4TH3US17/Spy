@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:spy/src/shared/enums/platforms.dart';
 import 'package:spy/src/shared/utils/converters.dart';
 
 enum SectionType { ACTIONS, DETAILS, LOGO }
@@ -26,14 +28,11 @@ class _HomeListSectionWidgetState extends State<HomeListSectionWidget> {
       width: _getWidthForSection(size.width),
       color: _getColorForSection(),
       child: Row(
+        mainAxisAlignment: (widget.sectionType == SectionType.LOGO)
+            ? MainAxisAlignment.center
+            : MainAxisAlignment.start,
         children: [
-          Text(
-            _getTextForSection(),
-            style: TextStyle(
-              fontSize: convertHeight(16, size.height),
-              color: _getTextColorForSection(),
-            ),
-          ),
+          _getTextForSection(size),
         ],
       ),
     );
@@ -42,9 +41,9 @@ class _HomeListSectionWidgetState extends State<HomeListSectionWidget> {
   double _getWidthForSection(double screenWidth) {
     switch (widget.sectionType) {
       case SectionType.LOGO:
-        return screenWidth * 0.2;
+        return screenWidth * 0.1;
       case SectionType.DETAILS:
-        return screenWidth * 0.6;
+        return screenWidth * 0.7;
       default:
         return screenWidth * 0.2;
     }
@@ -61,14 +60,35 @@ class _HomeListSectionWidgetState extends State<HomeListSectionWidget> {
     }
   }
 
-  String _getTextForSection() {
+  Widget _getTextForSection(Size size) {
+    IconData platformIcon =
+        (describeEnum(widget.data.platform) == describeEnum(Platform.FACEBOOK))
+            ? FontAwesomeIcons.facebook
+            : FontAwesomeIcons.instagram;
+
     switch (widget.sectionType) {
       case SectionType.LOGO:
-        return describeEnum(widget.data.platform);
+        return FaIcon(
+          platformIcon,
+          size: convertHeight(25, size.height),
+          color: Colors.black,
+        );
       case SectionType.DETAILS:
-        return 'details';
+        return Text(
+          'details',
+          style: TextStyle(
+            fontSize: convertHeight(16, size.height),
+            color: _getTextColorForSection(),
+          ),
+        );
       default:
-        return 'actions';
+        return Text(
+          'actions',
+          style: TextStyle(
+            fontSize: convertHeight(16, size.height),
+            color: _getTextColorForSection(),
+          ),
+        );
     }
   }
 
